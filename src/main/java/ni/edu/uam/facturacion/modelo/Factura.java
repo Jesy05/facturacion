@@ -1,23 +1,17 @@
 package ni.edu.uam.facturacion.modelo;
 
-import javax.ejb.Local;
-import javax.persistence. *;
-
-import lombok. *;
+import java.time.*;
+import javax.persistence.*;
+import ni.edu.uam.facturacion.calculator.NextNumberForYearCalculator;
 import org.hibernate.annotations.GenericGenerator;
-import org.openxava.annotations.DefaultValueCalculator;
-import org.openxava.annotations.Hidden;
-import org.openxava.annotations.Required;
-import org.openxava.annotations.Stereotype;
+import org.openxava.annotations.*;
+import lombok.*;
 import org.openxava.calculators.CurrentLocalDateCalculator;
 import org.openxava.calculators.CurrentYearCalculator;
 
-import java.time.LocalDate;
-
-@Setter @Getter @Entity
-
-
-public class Invoice {
+@Entity
+@Getter @Setter
+public class Factura {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @Hidden
@@ -30,7 +24,10 @@ public class Invoice {
     int year;
 
     @Column(length = 6)
-
+    @DefaultValueCalculator(
+            value = NextNumberForYearCalculator.class,
+            properties = @PropertyValue(name = "year")
+    )
     int number;
 
     @Required
@@ -39,6 +36,5 @@ public class Invoice {
 
     @Stereotype("MEMO")
     String remarks;
-
 
 }

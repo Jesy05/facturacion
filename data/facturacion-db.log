@@ -1,10 +1,2 @@
-/*C3*/SET SCHEMA PUBLIC
-DISCONNECT
 /*C4*/SET SCHEMA PUBLIC
-alter table Producto add column photos varchar(32)
-alter table Producto add column price numeric(19,2)
-alter table Producto add column remarks varchar(255)
-alter table Producto add column categoria_oid varchar(32)
-alter table Producto add constraint FKc81rcy0vfdn5ewnap5scabhd3 foreign key (categoria_oid) references Categoria
-INSERT INTO PRODUCTO VALUES(12,'book',NULL,NULL,20.00,'None','4028a8f09e75b387019e75b443c80000')
-COMMIT
+DISCONNECT
