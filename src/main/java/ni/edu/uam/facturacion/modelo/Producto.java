@@ -1,11 +1,8 @@
 package ni.edu.uam.facturacion.modelo;
 
-
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 import org.openxava.annotations.*;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -26,6 +23,10 @@ public class Producto {
             optional=true)
     @DescriptionsList
     Categoria categoria;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @DescriptionsList
+    Autor autor;
 
     @Money
     BigDecimal price;
