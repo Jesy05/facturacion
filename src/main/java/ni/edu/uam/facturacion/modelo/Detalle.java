@@ -11,7 +11,6 @@ public class Detalle {
     int cantidad;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @DescriptionsList
     Producto producto;
 
 }
