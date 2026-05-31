@@ -1,6 +1,7 @@
 package ni.edu.uam.facturacion.modelo;
 
 import java.time.*;
+import java.util.*; // Requerido para Collection
 import javax.persistence.*;
 import ni.edu.uam.facturacion.calculator.NextNumberForYearCalculator;
 import org.hibernate.annotations.GenericGenerator;
@@ -12,6 +13,7 @@ import org.openxava.calculators.CurrentYearCalculator;
 @Entity
 @Getter @Setter
 public class Factura {
+
     @Id
     @GeneratedValue(generator = "system-uuid")
     @Hidden
@@ -36,5 +38,12 @@ public class Factura {
 
     @Stereotype("MEMO")
     String remarks;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @DescriptionsList
+    Cliente cliente;
+
+    @ElementCollection
+    Collection<Detalle> detalles;
 
 }

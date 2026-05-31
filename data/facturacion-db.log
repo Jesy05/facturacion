@@ -1,2 +1,4 @@
-/*C4*/SET SCHEMA PUBLIC
+/*C3*/SET SCHEMA PUBLIC
 DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+create table Factura (oid varchar(32) not null, date date, number integer, remarks varchar(255), year integer, primary key (oid))
