@@ -12,6 +12,12 @@ import org.openxava.calculators.CurrentYearCalculator;
 
 @Entity
 @Getter @Setter
+@View(members =
+        "year, number, date;" +
+                "cliente;" +
+                "detalles;" +
+                "remarks"
+)
 public class Factura {
 
     @Id
@@ -37,7 +43,7 @@ public class Factura {
     LocalDate date;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @DescriptionsList
+    @ReferenceView("Simple")
     Cliente cliente;
 
     @ElementCollection
