@@ -1,7 +1,7 @@
 package ni.edu.uam.facturacion.modelo;
 
 import java.time.*;
-import java.util.*; // Requerido para Collection
+import java.util.*;
 import javax.persistence.*;
 import ni.edu.uam.facturacion.calculator.NextNumberForYearCalculator;
 import org.hibernate.annotations.GenericGenerator;
@@ -36,14 +36,15 @@ public class Factura {
     @DefaultValueCalculator(CurrentLocalDateCalculator.class)
     LocalDate date;
 
-    @Stereotype("MEMO")
-    String remarks;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @DescriptionsList
     Cliente cliente;
 
     @ElementCollection
+    @ListProperties("producto.numero, producto.descripcion, cantidad")
     Collection<Detalle> detalles;
+
+    @Stereotype("MEMO")
+    String remarks;
 
 }
