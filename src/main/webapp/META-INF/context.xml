@@ -3,10 +3,13 @@
 <Context>
 
 	<JarScanner scanClassPath="false" />
-	<CookieProcessor sameSiteCookies="lax" /> <Resource name="jdbc/facturacionDS" auth="Container" type="javax.sql.DataSource"
-														maxTotal="20" maxIdle="5" maxWaitMillis="10000"
-														username="postgres" password="123"
-														driverClassName="org.postgresql.Driver"
-														url="jdbc:postgresql://localhost:5432/uam_db"/>
+	<CookieProcessor sameSiteCookies="lax" />
+
+	<Resource name="jdbc/facturacionDS" auth="Container"
+			  type="javax.sql.DataSource"
+			  maxTotal="20" maxIdle="5" maxWaitMillis="10000"
+			  username="postgres" password="123DB"
+			  driverClassName="org.postgresql.Driver"
+			  url="jdbc:postgresql://localhost:5432/uam_db"/>
 
 </Context>
